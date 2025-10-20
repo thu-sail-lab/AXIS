@@ -21,7 +21,6 @@ AXIS/
 ├── data/
 │   └── AXIS_qa_test/          # Test dataset
 ├── requirements.txt           # Python dependencies
-└── env_template.txt          # Environment variables template
 ```
 
 ## Installation
@@ -46,31 +45,9 @@ conda activate AXIS
 pip install -r requirements.txt
 ```
 
-### 3. Configure environment variables
 
-Copy the environment template and fill in your Hugging Face token:
 
-```bash
-cp env_template.txt .env
-```
-
-Edit `.env` file:
-
-```bash
-# Hugging Face configuration
-HF_TOKEN="your_huggingface_token_here"
-HF_ENDPOINT="https://hf-mirror.com"
-HF_HOME="~/cache/huggingface"
-TRANSFORMERS_CACHE="~/cache/huggingface/transformers"
-
-# CUDA device configuration
-CUDA_VISIBLE_DEVICES=1
-
-# Distributed training port
-DIST_PORT=12355
-```
-
-### 4. Download and extract model checkpoints
+### 3. Download and extract model checkpoints
 
 Download the pre-trained model checkpoints from Hugging Face:
 
@@ -93,25 +70,15 @@ cd ..
 1. **Set environment variables**
 
 ```bash
-export HF_TOKEN="your_huggingface_token_here"
-export HF_ENDPOINT="https://hf-mirror.com"
-export HF_HOME="~/cache/huggingface"
-export TRANSFORMERS_CACHE="~/cache/huggingface/transformers"
-export CUDA_VISIBLE_DEVICES=2
+export HF_TOKEN="your_huggingface_token"
+export CUDA_VISIBLE_DEVICES=0
 ```
 
 2. **Run test script**
 
 ```bash
 # Set PYTHONPATH and run test
-PYTHONPATH=/path/to/AXIS python src/models/AXIS/AXIS_test.py
-```
-
-Or run with one command:
-
-```bash
-# Load environment variables from .env and run
-(source .env && PYTHONPATH=$(pwd) python src/models/AXIS/AXIS_test.py)
+python -m src.models.AXIS.AXIS_test
 ```
 
 3. **View results**
