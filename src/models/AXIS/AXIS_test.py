@@ -1,11 +1,5 @@
 import os
 
-# Environment setup
-os.environ["HF_ENDPOINT"] = os.getenv("HF_ENDPOINT", "https://hf-mirror.com")
-os.environ["HF_HOME"] = os.getenv("HF_HOME", os.path.expanduser("~/cache/huggingface"))
-os.environ["TRANSFORMERS_CACHE"] = os.getenv("TRANSFORMERS_CACHE", os.path.expanduser("~/cache/huggingface/transformers"))
-
-import re 
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader
